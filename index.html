@@ -14,10 +14,9 @@
     
     <!-- For styling -->
     <style> 
-    
         table#calcu {
-            width: 80vw; /* 80% of the viewport width */
-            height: 80vh; /* 80% of the viewport height */
+            width: 80%; /* Initial width as a percentage */
+            height: 80%; /* Initial height as a percentage */
             max-width: 400px; /* Maximum width to limit resizing */
             max-height: 400px; /* Maximum height to limit resizing */
             margin: auto; /* Center the table horizontally */
@@ -50,58 +49,43 @@
 
 <body>
     <!-- Use Table to Create Calculator Structure Design -->
-
     <table id="calcu"> 
-        <tr> 
-            <td colspan="3"><input type="text" id="result"></td> 
-            <td><input type="button" value="c" onclick="clr()" /> </td> 
-        </tr> 
-        <tr> 
-            <td><input type="button" value="1" onclick="dis('1')"
-                        onkeydown="myFunction(event)"> </td> 
-            <td><input type="button" value="2" onclick="dis('2')"
-                        onkeydown="myFunction(event)"> </td> 
-            <td><input type="button" value="3" onclick="dis('3')"
-                        onkeydown="myFunction(event)"> </td> 
-            <td><input type="button" value="/" onclick="dis('/')"
-                        onkeydown="myFunction(event)"> </td> 
-        </tr> 
-        <tr> 
-            <td><input type="button" value="4" onclick="dis('4')"
-                        onkeydown="myFunction(event)"> </td> 
-            <td><input type="button" value="5" onclick="dis('5')"
-                        onkeydown="myFunction(event)"> </td> 
-            <td><input type="button" value="6" onclick="dis('6')"
-                        onkeydown="myFunction(event)"> </td> 
-            <td><input type="button" value="*" onclick="dis('*')"
-                        onkeydown="myFunction(event)"> </td> 
-        </tr> 
-        <tr> 
-            <td><input type="button" value="7" onclick="dis('7')"
-                        onkeydown="myFunction(event)"> </td> 
-            <td><input type="button" value="8" onclick="dis('8')"
-                        onkeydown="myFunction(event)"> </td> 
-            <td><input type="button" value="9" onclick="dis('9')"
-                        onkeydown="myFunction(event)"> </td> 
-            <td><input type="button" value="-" onclick="dis('-')"
-                        onkeydown="myFunction(event)"> </td> 
-        </tr> 
-        <tr> 
-            <td><input type="button" value="0" onclick="dis('0')"
-                        onkeydown="myFunction(event)"> </td> 
-            <td><input type="button" value="." onclick="dis('.')"
-                        onkeydown="myFunction(event)"> </td> 
-            
-            <!-- solve function call function solve to evaluate value -->
-            <td><input type="button" value="=" onclick="solve()"> </td> 
+        <tbody>
+            <tr> 
+                <td colspan="3"><input type="text" id="result"></td> 
+                <td><input type="button" value="c" onclick="clr()"> </td> 
+            </tr> 
+            <tr> 
+                <td><input type="button" value="1" onclick="dis('1')" onkeydown="myFunction(event)"> </td> 
+                <td><input type="button" value="2" onclick="dis('2')" onkeydown="myFunction(event)"> </td> 
+                <td><input type="button" value="3" onclick="dis('3')" onkeydown="myFunction(event)"> </td> 
+                <td><input type="button" value="/" onclick="dis('/')" onkeydown="myFunction(event)"> </td> 
+            </tr> 
+            <tr> 
+                <td><input type="button" value="4" onclick="dis('4')" onkeydown="myFunction(event)"> </td> 
+                <td><input type="button" value="5" onclick="dis('5')" onkeydown="myFunction(event)"> </td> 
+                <td><input type="button" value="6" onclick="dis('6')" onkeydown="myFunction(event)"> </td> 
+                <td><input type="button" value="*" onclick="dis('*')" onkeydown="myFunction(event)"> </td> 
+            </tr> 
+            <tr> 
+                <td><input type="button" value="7" onclick="dis('7')" onkeydown="myFunction(event)"> </td> 
+                <td><input type="button" value="8" onclick="dis('8')" onkeydown="myFunction(event)"> </td> 
+                <td><input type="button" value="9" onclick="dis('9')" onkeydown="myFunction(event)"> </td> 
+                <td><input type="button" value="-" onclick="dis('-')" onkeydown="myFunction(event)"> </td> 
+            </tr> 
+            <tr> 
+                <td><input type="button" value="0" onclick="dis('0')" onkeydown="myFunction(event)"> </td> 
+                <td><input type="button" value="." onclick="dis('.')" onkeydown="myFunction(event)"> </td> 
+                
+                <!-- solve function call function solve to evaluate value -->
+                <td><input type="button" value="=" onclick="solve()"> </td> 
 
-            <td><input type="button" value="+" onclick="dis('+')"
-                        onkeydown="myFunction(event)"> </td> 
-        </tr> 
+                <td><input type="button" value="+" onclick="dis('+')" onkeydown="myFunction(event)"> </td> 
+            </tr> 
+        </tbody>
     </table> 
 
     <script> 
-        
         // Function that display value 
         function dis(val) { 
             document.getElementById("result").value += val 
@@ -118,15 +102,25 @@
                 document.getElementById("result").value += event.key; 
         } 
 
-        var cal = document.getElementById("calcu"); 
-        cal.onkeyup = function (event) { 
-            if (event.keyCode === 13) { 
-                console.log("Enter"); 
-                let x = document.getElementById("result").value 
-                console.log(x); 
-                solve(); 
-            } 
-        } 
+        var calcuTable = document.getElementById("calcu");
+
+        // Function to resize the calculator based on viewport size
+        function resizeCalculator() {
+            var viewportWidth = window.innerWidth;
+            var viewportHeight = window.innerHeight;
+
+            // Calculate new width and height
+            var newWidth = Math.min(viewportWidth * 0.8, 400); // 80% of viewport width or maximum of 400px
+            var newHeight = Math.min(viewportHeight * 0.8, 400); // 80% of viewport height or maximum of 400px
+
+            // Apply new width and height to the table
+            calcuTable.style.width = newWidth + "px";
+            calcuTable.style.height = newHeight + "px";
+        }
+
+        // Call resizeCalculator function initially and on window resize
+        window.onload = resizeCalculator;
+        window.onresize = resizeCalculator;
 
         // Function that evaluates the digit and return result 
         function solve() { 
@@ -140,9 +134,10 @@
             document.getElementById("result").value = "" 
         } 
     </script>  
-</body>
+
 <footer>
-    <p style="font-family:monospace"></style> MathBot | Test Build 1.0.6 </p>
-    
+    <p style="font-family:monospace"> MathBot | Test Build 1.0.6 </p>
 </footer>
+
+</body>
 </html>
