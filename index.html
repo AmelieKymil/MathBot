@@ -113,6 +113,25 @@
         function clr() { 
             document.getElementById("result").value = "" 
         } 
+
+        // Function to resize the calculator based on viewport size
+        function resizeCalculator() {
+            var calcuTable = document.getElementById("calcu");
+            var viewportWidth = window.innerWidth;
+            var viewportHeight = window.innerHeight;
+
+            // Calculate new width and height
+            var newWidth = Math.min(viewportWidth, 250); // Ensure calculator width doesn't exceed 250px
+            var newHeight = Math.min(viewportHeight, 320); // Ensure calculator height doesn't exceed 320px
+
+            // Apply new width and height to the table
+            calcuTable.style.width = newWidth + "px";
+            calcuTable.style.height = newHeight + "px";
+        }
+
+        // Call resizeCalculator function initially and on window resize
+        window.onload = resizeCalculator;
+        window.onresize = resizeCalculator;
     </script>  
 
 <footer>
