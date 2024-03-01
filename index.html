@@ -15,10 +15,10 @@
     <!-- For styling -->
     <style> 
         table#calcu {
-            width: 80%; /* Initial width as a percentage */
-            height: 80%; /* Initial height as a percentage */
-            max-width: 400px; /* Maximum width to limit resizing */
-            max-height: 400px; /* Maximum height to limit resizing */
+            width: 250px; /* Fixed width of 250px */
+            height: 320px; /* Fixed height of 320px */
+            max-width: 100%; /* Ensure table does not exceed specified dimensions */
+            max-height: 100%; /* Ensure table does not exceed specified dimensions */
             margin: auto; /* Center the table horizontally */
         }
 
@@ -101,26 +101,6 @@
                 || event.key == '*' || event.key == '/') 
                 document.getElementById("result").value += event.key; 
         } 
-
-        var calcuTable = document.getElementById("calcu");
-
-        // Function to resize the calculator based on viewport size
-        function resizeCalculator() {
-            var viewportWidth = window.innerWidth;
-            var viewportHeight = window.innerHeight;
-
-            // Calculate new width and height
-            var newWidth = Math.min(viewportWidth * 0.8, 400); // 80% of viewport width or maximum of 400px
-            var newHeight = Math.min(viewportHeight * 0.8, 400); // 80% of viewport height or maximum of 400px
-
-            // Apply new width and height to the table
-            calcuTable.style.width = newWidth + "px";
-            calcuTable.style.height = newHeight + "px";
-        }
-
-        // Call resizeCalculator function initially and on window resize
-        window.onload = resizeCalculator;
-        window.onresize = resizeCalculator;
 
         // Function that evaluates the digit and return result 
         function solve() { 
