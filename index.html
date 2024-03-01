@@ -15,10 +15,10 @@
     <!-- For styling -->
     <style> 
         table#calcu {
-            width: 250px; /* Fixed width of 250px */
-            height: 320px; /* Fixed height of 320px */
-            max-width: 100%; /* Ensure table does not exceed specified dimensions */
-            max-height: 100%; /* Ensure table does not exceed specified dimensions */
+            width: 80%; /* 80% of the viewport width */
+            height: 80%; /* 80% of the viewport height */
+            max-width: 250px; /* Maximum width to limit resizing */
+            max-height: 320px; /* Maximum height to limit resizing */
             margin: auto; /* Center the table horizontally */
         }
 
@@ -120,13 +120,13 @@
             var viewportWidth = window.innerWidth;
             var viewportHeight = window.innerHeight;
 
-            // Calculate new width and height
-            var newWidth = Math.min(viewportWidth, 250); // Ensure calculator width doesn't exceed 250px
-            var newHeight = Math.min(viewportHeight, 320); // Ensure calculator height doesn't exceed 320px
+            // Calculate new width and height percentages
+            var newWidthPercent = Math.min((250 / viewportWidth) * 100, 80); // Ensure calculator width doesn't exceed 80% of viewport
+            var newHeightPercent = Math.min((320 / viewportHeight) * 100, 80); // Ensure calculator height doesn't exceed 80% of viewport
 
-            // Apply new width and height to the table
-            calcuTable.style.width = newWidth + "px";
-            calcuTable.style.height = newHeight + "px";
+            // Apply new width and height percentages to the table
+            calcuTable.style.width = newWidthPercent + "%";
+            calcuTable.style.height = newHeightPercent + "%";
         }
 
         // Call resizeCalculator function initially and on window resize
