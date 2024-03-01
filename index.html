@@ -1,36 +1,35 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MathBot 1.0.5</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
-            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js" crossorigin="anonymous"></script>
     <style>
         body, html {
             margin: 0;
             padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent; /* Make background transparent */
             display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            width: 100vw;
-            height: 100vh;
-            background-color: #f0f0f0; /* For visibility */
+            flex-direction: column;
+            align-items: flex-start; /* Align items to the top left */
         }
 
         #calcu {
             display: flex;
             flex-wrap: wrap;
-            width: 100%; /* Fit to the viewport width dynamically */
+            width: 100%; /* Allow calculator to dynamically fit the viewport width */
             max-width: 250px; /* Optimal width */
-            padding: 5px;
+            background-color: transparent; /* Calculator background */
         }
 
         input[type="button"], input[type="text"] {
-            box-sizing: border-box; /* Include padding and border */
             width: 22%; /* Relative width for buttons */
-            margin: 1%; /* Margin between buttons */
+            margin: 1%;
             height: 48px; /* Fixed height for buttons */
-            font-size: 4vw; /* Font size scales with the viewport width */
+            font-size: 16px; /* Adjust font size for visibility */
             background-color: #7b1a1ad9;
             color: white;
             font-weight: bold;
@@ -40,20 +39,24 @@
         }
 
         input[type="text"] {
-            box-sizing: border-box; /* Include padding and border */
-            width: 96%; /* Adjusted for margin */
-            margin: 0 2% 4% 2%; /* Margin to separate from the buttons */
-            height: 60px; /* Height for visibility */
-            font-size: 20pt; /* Increased font size for legibility */
+            width: 96%; /* Full width of the row */
+            margin: 0 2% 4% 2%; /* Adjust margins */
+            height: 60px; /* Increased height for visibility */
+            font-size: 20pt; /* Font size for output text */
             background-color: #0f0f0fd9;
             color: white;
             border-radius: 5px;
             border: none; /* No border */
-            text-align: right; /* Align text to the right */
+            text-align: right;
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px; /* Adjust as needed to fit */
         }
     </style>
 </head>
-
 <body>
     <div id="calcu">
         <input type="text" id="result" readonly>
@@ -75,6 +78,9 @@
         <input type="button" value="+" onclick="dis('+')">
         <input type="button" value="c" onclick="clr()">
     </div>
+    <footer>
+        <p style="font-family:monospace">MathBot | Test Build 1.0.6</p>
+    </footer>
     <script>
         function dis(val) {
             document.getElementById("result").value += val;
@@ -91,5 +97,4 @@
         }
     </script>
 </body>
-
 </html>
