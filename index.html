@@ -20,6 +20,7 @@
             max-width: 250px; /* Maximum width to limit resizing */
             max-height: 320px; /* Maximum height to limit resizing */
             margin: auto; /* Center the table horizontally */
+            border-collapse: collapse; /* Collapse borders */
         }
 
         input[type="button"] { 
@@ -31,7 +32,9 @@
             font-size: 24px; 
             font-weight: bold; 
             border: none; 
-            border-radius: 5px; 
+            border-radius: 0; /* No border radius */
+            box-sizing: border-box; /* Include padding in width calculation */
+            text-align: center; /* Center button text */
         } 
 
         input[type="text"] { 
@@ -43,7 +46,9 @@
             font-size: 24px; 
             font-weight: bold; 
             border: none; 
-            border-radius: 5px; 
+            border-radius: 0; /* No border radius */
+            box-sizing: border-box; /* Include padding in width calculation */
+            text-align: right; /* Align text to the right */
         } 
     </style> 
 </head> 
@@ -53,8 +58,7 @@
     <table id="calcu"> 
         <tbody>
             <tr> 
-                <td colspan="3"><input type="text" id="result"></td> 
-                <td><input type="button" value="c" onclick="clr()"> </td> 
+                <td colspan="4"><input type="text" id="result"></td> 
             </tr> 
             <tr> 
                 <td><input type="button" value="1" onclick="dis('1')" onkeydown="myFunction(event)"> </td> 
@@ -79,9 +83,7 @@
                 <td><input type="button" value="." onclick="dis('.')" onkeydown="myFunction(event)"> </td> 
                 
                 <!-- solve function call function solve to evaluate value -->
-                <td><input type="button" value="=" onclick="solve()"> </td> 
-
-                <td><input type="button" value="+" onclick="dis('+')" onkeydown="myFunction(event)"> </td> 
+                <td colspan="2"><input type="button" value="=" onclick="solve()"> </td> 
             </tr> 
         </tbody>
     </table> 
@@ -128,6 +130,14 @@
             // Apply new width and height percentages to the table
             calcuTable.style.width = newWidthPercent + "%";
             calcuTable.style.height = newHeightPercent + "%";
+
+            // Resize buttons
+            var buttons = document.querySelectorAll("input[type='button']");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].style.width = (25 * newWidthPercent / 100) + "%";
+                buttons[i].style.height = (20 * newHeightPercent / 100) + "%";
+                buttons[i].style.fontSize = (24 * (newWidthPercent / 100)) + "px";
+            }
         }
 
         // Call resizeCalculator function initially and on window resize
