@@ -8,48 +8,52 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"></script>
     <style>
-        body {
+        /* Reset margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
+            align-items: center;
+            background-color: #f0f0f0;
         }
 
         table {
-            margin: auto;
-            max-width: 90vw; /* Adjust the table width based on the viewport width */
-            border-collapse: collapse;
+            margin-bottom: 20px; /* Ensures space between the calculator and the footer */
         }
 
         input[type="button"], input[type="text"] {
-            width: 22%; /* Allocate width to fit 4 buttons per row, adjusting for a little spacing */
-            margin: 1%; /* Provide spacing around buttons */
-            padding: 12px 0; /* Responsive padding */
-            font-size: 5vw; /* Responsive font size based on viewport width, adjust as needed */
-            background-color: #7b1a1ad9;
-            color: white;
-            font-weight: bold;
+            width: 50px; /* Starting width, but we'll make this responsive */
+            height: 50px; /* Starting height, but we'll make this responsive */
+            margin: 5px;
+            font-size: 16px; /* Starting font size, will adjust this as well */
             border: none;
             border-radius: 5px;
-            cursor: pointer; /* Indicate clickable items */
         }
 
         input[type="text"] {
-            width: 94%; /* Allow the display input to span almost the full width of the table */
-            margin: 0 3% 5% 3%; /* Adjust margins for the display input for spacing */
-            font-size: 5.5vw; /* Slightly larger font size for the display input */
+            width: calc(100% - 10px); /* Make the input field width responsive */
+            margin: 5px;
+            text-align: right;
         }
 
-        @media (min-width: 768px) {
+        /* Responsive adjustments */
+        @media (max-width: 400px) {
             input[type="button"], input[type="text"] {
-                font-size: 2vw; /* Ensure the font size is not too large on wider screens */
-                padding: 15px 0; /* Adjust padding for a better proportion */
+                width: 45px; /* Adjust for smaller screens */
+                height: 45px;
+                font-size: 14px;
             }
 
             input[type="text"] {
-                font-size: 2.5vw; /* Slightly larger font size for the display input on wider screens */
+                width: calc(100% - 10px); /* Adjust input field width on smaller screens */
             }
         }
     </style>
@@ -57,11 +61,21 @@
 
 <body>
     <table id="calcu">
-        <!-- Calculator structure with buttons -->
+        <!-- Calculator structure -->
+        <tr>
+            <td colspan="4"><input type="text" id="result"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" onclick="dis('1')"></td>
+            <td><input type="button" value="2" onclick="dis('2')"></td>
+            <td><input type="button" value="3" onclick="dis('3')"></td>
+            <td><input type="button" value="+" onclick="dis('+')"></td>
+        </tr>
+        <!-- Add the rest of the buttons in a similar manner -->
     </table>
 
     <script>
-        // JavaScript for calculator functionality
+        // Function definitions for dis(), solve(), and clr()
     </script>
 </body>
 <footer>
