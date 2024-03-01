@@ -1,6 +1,5 @@
 <!DOCTYPE html> 
 <html> 
-
 <head> 
     <title>MathBot 1.0.5</title> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
@@ -26,35 +25,33 @@
         input[type="button"] { 
             width: 25%; /* 25% of the table width */
             height: 20%; /* 20% of the table height */
-            padding: 10px 20px; 
+            padding: 10px 0; /* Adjust padding */
             background-color: #7b1a1ad9; 
             color: #FFFFFFFF; 
             font-size: 24px; 
             font-weight: bold; 
-            border: none; 
-            border-radius: 0; /* No border radius */
+            border: none; /* Remove border */
             box-sizing: border-box; /* Include padding in width calculation */
             text-align: center; /* Center button text */
-            margin: 0; /* Remove margin */
+            vertical-align: middle; /* Align vertically */
         } 
 
         input[type="text"] { 
             width: 90%; /* 90% of the table width */
             height: 20%; /* 20% of the table height */
-            padding: 10px 15px; 
+            padding: 10px; /* Adjust padding */
             background-color: #0f0f0fd9;
             color: #FFFFFFFF;
             font-size: 24px; 
             font-weight: bold; 
-            border: none; 
-            border-radius: 0; /* No border radius */
+            border: none; /* Remove border */
             box-sizing: border-box; /* Include padding in width calculation */
             text-align: right; /* Align text to the right */
-            margin: 0; /* Remove margin */
         } 
 
         footer {
-            color: rgba(128, 128, 128, 0.025); /* Footer text color */
+            color: rgba(128, 128, 128, 1); /* Footer text color */
+            font-family: monospace; /* Set font family */
         }
     </style> 
 </head> 
@@ -152,7 +149,7 @@
     </script>  
 
 <footer>
-    <p style="font-family:monospace"> MathBot | Test Build 1.0.6 </p>
+    <p>MathBot | Test Build 1.0.6</p>
 </footer>
 
 </body>
