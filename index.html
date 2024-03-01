@@ -8,40 +8,48 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"></script>
     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
         table {
-            width: 100%; /* Use the full width of the container */
-            border-collapse: collapse; /* Optional: for styling */
+            margin: auto;
+            max-width: 90vw; /* Adjust the table width based on the viewport width */
+            border-collapse: collapse;
         }
 
         input[type="button"], input[type="text"] {
-            width: 23%; /* Allocate width to fit 4 buttons per row, accounting for margin */
-            margin: 1%; /* Provide spacing between buttons */
-            padding: 5px 0; /* Vertical padding */
-            font-size: 4vw; /* Responsive font size based on viewport width */
+            width: 22%; /* Allocate width to fit 4 buttons per row, adjusting for a little spacing */
+            margin: 1%; /* Provide spacing around buttons */
+            padding: 12px 0; /* Responsive padding */
+            font-size: 5vw; /* Responsive font size based on viewport width, adjust as needed */
             background-color: #7b1a1ad9;
             color: white;
             font-weight: bold;
             border: none;
             border-radius: 5px;
-            cursor: pointer; /* Change cursor to pointer on hover over buttons */
+            cursor: pointer; /* Indicate clickable items */
         }
 
         input[type="text"] {
-            width: 96%; /* Allow the display to span almost the full width */
-            margin: 0 2% 5% 2%; /* Adjust margin for layout */
-            font-size: 5vw; /* Slightly larger font size for display */
-        }
-
-        /* Adjustments for very small or very large viewports */
-        @media (max-width: 300px) {
-            input[type="button"], input[type="text"] {
-                font-size: 5vw; /* Increase font size for better visibility on small screens */
-            }
+            width: 94%; /* Allow the display input to span almost the full width of the table */
+            margin: 0 3% 5% 3%; /* Adjust margins for the display input for spacing */
+            font-size: 5.5vw; /* Slightly larger font size for the display input */
         }
 
         @media (min-width: 768px) {
             input[type="button"], input[type="text"] {
-                font-size: 2vw; /* Adjust font size to ensure it's not overly large on big screens */
+                font-size: 2vw; /* Ensure the font size is not too large on wider screens */
+                padding: 15px 0; /* Adjust padding for a better proportion */
+            }
+
+            input[type="text"] {
+                font-size: 2.5vw; /* Slightly larger font size for the display input on wider screens */
             }
         }
     </style>
@@ -49,7 +57,7 @@
 
 <body>
     <table id="calcu">
-        <!-- Calculator structure -->
+        <!-- Calculator structure with buttons -->
     </table>
 
     <script>
