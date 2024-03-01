@@ -2,34 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MathBot 1.0.5</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js" crossorigin="anonymous"></script>
     <style>
         body, html {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: transparent; /* Make background transparent */
             display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* Align items to the top left */
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            background-color: transparent;
         }
 
         #calcu {
             display: flex;
-            flex-wrap: wrap;
-            width: 100%; /* Allow calculator to dynamically fit the viewport width */
-            max-width: 250px; /* Optimal width */
-            background-color: transparent; /* Calculator background */
+            flex-direction: column;
+            width: 80vw; /* Scale width with viewport */
+            max-width: 250px; /* Default max width */
+            height: auto; /* Adjust height based on content */
+            max-height: 320px; /* Default max height */
         }
 
         input[type="button"], input[type="text"] {
-            width: 22%; /* Relative width for buttons */
-            margin: 1%;
-            height: 48px; /* Fixed height for buttons */
-            font-size: 16px; /* Adjust font size for visibility */
+            font-size: calc(1vw + 1vh + .5vmin); /* Dynamically adjust font size */
             background-color: #7b1a1ad9;
             color: white;
             font-weight: bold;
@@ -38,28 +35,33 @@
             text-align: center;
         }
 
+        input[type="button"] {
+            width: 23%; /* Relative width for buttons */
+            margin: 1%; /* Margin between buttons */
+            height: 15%; /* Relative height for buttons */
+        }
+
         input[type="text"] {
             width: 96%; /* Full width of the row */
-            margin: 0 2% 4% 2%; /* Adjust margins */
-            height: 60px; /* Increased height for visibility */
-            font-size: 20pt; /* Font size for output text */
+            margin: 0 2%; /* Margin for the top text input */
+            height: 20%; /* Relative height for text input */
             background-color: #0f0f0fd9;
-            color: white;
-            border-radius: 5px;
-            border: none; /* No border */
+            border: none;
             text-align: right;
         }
 
         footer {
+            position: absolute;
+            bottom: 0;
             width: 100%;
-            text-align: center;
-            margin-top: 10px; /* Adjust as needed to fit */
+            text-align: left;
         }
     </style>
 </head>
 <body>
     <div id="calcu">
         <input type="text" id="result" readonly>
+        <!-- Buttons -->
         <input type="button" value="1" onclick="dis('1')">
         <input type="button" value="2" onclick="dis('2')">
         <input type="button" value="3" onclick="dis('3')">
