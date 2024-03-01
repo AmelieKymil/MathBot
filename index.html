@@ -9,71 +9,79 @@
         body, html {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
             display: flex;
-            flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
         }
 
         #calcu {
-            width: 250px; /* Fixed width to match viewport */
-            height: 320px; /* Fixed height to match viewport */
-            overflow: hidden; /* Ensures no overflow out of the viewport */
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 4px; /* Adjust gap for visual spacing between buttons */
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 250px; /* Maintain calculator size */
+            padding: 5px;
+            border: 1px solid #000; /* Optional: adds a border for clarity */
         }
 
         input[type="button"], input[type="text"] {
-            width: 100%;
-            height: 60px; /* Adjust height for uniformity */
-            font-size: 16px; /* Adjust font size for visibility */
+            flex: 0 0 22%; /* Adjust for responsiveness */
+            margin: 2px;
+            height: 50px;
+            font-size: 5vw;
             background-color: #7b1a1ad9;
             color: white;
             font-weight: bold;
             border: none;
             border-radius: 5px;
-            text-align: center; /* Center align text */
+            text-align: center;
         }
 
         input[type="text"] {
-            grid-column: span 4; /* Makes the display span all columns */
-            margin-bottom: 4px; /* Adjust spacing below the display */
+            flex: 0 0 96%;
+            background-color: #0f0f0fd9;
+            color: white;
+            border-radius: 5px;
+            border: 2px solid #0f0f0fd9;
+            text-align: right;
+            margin: 2px;
+            height: 50px;
         }
 
         footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
+            width: 250px; /* Match the calculator width */
             text-align: center;
+            margin-top: 5px; /* Adjust based on your preference */
         }
     </style>
 </head>
 
 <body>
-    <div id="calcu">
-        <input type="text" id="result" readonly>
-        <!-- Buttons -->
-        <input type="button" value="1" onclick="dis('1')">
-        <input type="button" value="2" onclick="dis('2')">
-        <input type="button" value="3" onclick="dis('3')">
-        <input type="button" value="/" onclick="dis('/')">
-        <input type="button" value="4" onclick="dis('4')">
-        <input type="button" value="5" onclick="dis('5')">
-        <input type="button" value="6" onclick="dis('6')">
-        <input type="button" value="*" onclick="dis('*')">
-        <input type="button" value="7" onclick="dis('7')">
-        <input type="button" value="8" onclick="dis('8')">
-        <input type="button" value="9" onclick="dis('9')">
-        <input type="button" value="-" onclick="dis('-')">
-        <input type="button" value="0" onclick="dis('0')">
-        <input type="button" value="." onclick="dis('.')">
-        <input type="button" value="=" onclick="solve()">
-        <input type="button" value="+" onclick="dis('+')">
-        <input type="button" value="c" onclick="clr()">
+    <div id="calcu-container" style="align-items: flex-start; flex-direction: column;">
+        <div id="calcu">
+            <input type="text" id="result" readonly>
+            <!-- Calculator buttons -->
+            <input type="button" value="1" onclick="dis('1')">
+            <input type="button" value="2" onclick="dis('2')">
+            <input type="button" value="3" onclick="dis('3')">
+            <input type="button" value="/" onclick="dis('/')">
+            <input type="button" value="4" onclick="dis('4')">
+            <input type="button" value="5" onclick="dis('5')">
+            <input type="button" value="6" onclick="dis('6')">
+            <input type="button" value="*" onclick="dis('*')">
+            <input type="button" value="7" onclick="dis('7')">
+            <input type="button" value="8" onclick="dis('8')">
+            <input type="button" value="9" onclick="dis('9')">
+            <input type="button" value="-" onclick="dis('-')">
+            <input type="button" value="0" onclick="dis('0')">
+            <input type="button" value="." onclick="dis('.')">
+            <input type="button" value="=" onclick="solve()">
+            <input type="button" value="+" onclick="dis('+')">
+            <input type="button" value="c" onclick="clr()"><!-- Clear button reintroduced -->
+        </div>
+        <footer>
+            <p style="font-family:monospace">MathBot | Test Build 1.0.6</p>
+        </footer>
     </div>
+
     <script>
         function dis(val) {
             document.getElementById("result").value += val;
@@ -89,9 +97,6 @@
             document.getElementById("result").value = "";
         }
     </script>
-    <footer>
-        <p style="font-family:monospace">MathBot | Test Build 1.0.6</p>
-    </footer>
 </body>
 
 </html>
