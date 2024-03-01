@@ -7,47 +7,43 @@
             integrity="sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="
             crossorigin="anonymous"
             referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"
+            integrity="sha512-iphNRh6dPbeuPGIrQbCdbBF/qcqadKWLa35YPVfMZMHBSI6PLJh1om2xCTWhpVpmUyb4IvVS9iYnnYMkleVXLA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
     
     <!-- For styling -->
     <style>
         table {
-            width: 100%; /* Make the table width 100% of the viewport width */
-            max-width: 100%; /* Ensure table does not exceed the viewport width */
-            height: auto; /* Let the table height be automatic to maintain aspect ratio */
-            margin: 0 auto; /* Center the table horizontally */
+            margin-top: 0%;
+            margin-left: 0%;
+            margin-right: 0%;
+            margin-bottom: 0%;
+            max-height: 300px;
+            max-width: 220px;
         }
 
-        input[type="button"], input[type="text"] {
-            width: 23%; /* Adjust button width to fit 4 across, accounting for some spacing */
-            height: 15vw; /* Set height relative to the viewport width */
-            padding: 1vw; /* Padding relative to viewport width for spacing */
-            font-size: 3vw; /* Adjust font size to be responsive */
-            margin: 1%; /* Add a small margin to prevent buttons from touching */
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
-            background-color: #7b1a1ad9; 
-            color: #FFFFFF; 
-            font-weight: bold; 
-            border: none; 
+        input[type="button"] {
+            width: 100%;
+            height: 100%;
+            padding: 10px 20px;
+            background-color: #7b1a1ad9;
+            color: #FFFFFFFF;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
             border-radius: 5px;
         }
 
         input[type="text"] {
-            width: 96%; /* Adjust text input to span almost full width, accounting for margin */
-            height: 15vw; /* Consistent height with buttons */
-            margin: 2% 1% 4% 1%; /* Adjust margin for spacing */
+            padding: 10px 15px;
             background-color: #0f0f0fd9;
-            color: #FFFFFF;
-            font-weight: bold; 
-            border-radius: 5px; 
-            border: 2px solid #0f0f0fd9;
-        }
-
-        /* Responsive adjustments for smaller devices */
-        @media (max-width: 250px) {
-            input[type="button"], input[type="text"] {
-                height: 20vh; /* Increase height for smaller viewports */
-                font-size: 5vh; /* Increase font size for readability on small screens */
-            }
+            color: #FFFFFFFF;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px #0f0f0fd9;
         }
     </style>
 </head>
@@ -60,17 +56,35 @@
             <td><input type="button" value="c" onclick="clr()" /></td>
         </tr>
         <tr>
-            <!-- Calculator buttons -->
+            <td><input type="button" value="1" onclick="dis('1')"> </td>
+            <td><input type="button" value="2" onclick="dis('2')"> </td>
+            <td><input type="button" value="3" onclick="dis('3')"> </td>
+            <td><input type="button" value="/" onclick="dis('/')"> </td>
         </tr>
-        <!-- Additional rows and buttons omitted for brevity -->
+        <!-- Additional rows for digits and operations -->
     </table>
 
     <script>
-        // JavaScript functions for calculator functionality
+        // Function that display value
+        function dis(val) {
+            document.getElementById("result").value += val
+        }
+
+        // Function that evaluates the digit and return result
+        function solve() {
+            let x = document.getElementById("result").value
+            let y = math.evaluate(x)
+            document.getElementById("result").value = y
+        }
+
+        // Function that clear the display
+        function clr() {
+            document.getElementById("result").value = ""
+        }
     </script>
 </body>
 <footer>
-    <p style="font-family:monospace">MathBot | Test Build 1.0.6</p>
+    <p style="font-family:monospace">MathBot | Test Build 1.0.6 </p>
 </footer>
 
 </html>
